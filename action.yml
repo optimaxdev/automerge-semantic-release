@@ -1,0 +1,24 @@
+name: 'Semantic Release Automerge'
+description: 'Auto-merge hotfixes from semantic version branches (e.g., 1.1.x) to higher version branches (1.2.x, 1.3.x) within the same major version'
+author: 'optimaxdev'
+inputs:
+  token:
+    description: 'GitHub token'
+    required: false
+    default: ${{ github.token }}
+  automergePrLabel:
+      description: 'Label added to a PR created on a merge conflict'
+      required: false
+      default: 'automerge failed'
+  remoteName:
+      description: 'Name of the remote repository'
+      required: false
+      default: 'origin'
+  # DEPRECATED
+  # branchFetchingStrategy:
+  #     description: 'Strategy used for releated branches list fetching. Can be "api" - GitHub API will be used or DEPRECATED! "bash" - git cli from bash will be used'
+  #     required: false
+  #     default: 'api'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

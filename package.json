@@ -1,0 +1,48 @@
+{
+  "name": "automerge-semantic-release",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Automatically merge changes from a prevous to next releases and the default branch",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write **/*.ts",
+    "format-check": "prettier --check **/*.ts",
+    "lint": "eslint src/**/*.ts --ignore-pattern src/**/__tests__/**",
+    "package": "ncc build src/main.ts --source-map",
+    "test": "jest",
+    "all": "yarn format && yarn package",
+    "push": "yarn all && git add -A && git commit -m 'commit' && git push --force"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/optimaxdev/automerge-semantic-release.git"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "setup"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^6.0.0"
+  },
+  "devDependencies": {
+    "@octokit/types": "^13.5.0",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^15.12.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "@vercel/ncc": "^0.38.1",
+    "eslint": "^8.36.0",
+    "eslint-plugin-github": "^4.7.0",
+    "eslint-plugin-jest": "^27.2.1",
+    "jest": "^24.9.0",
+    "jest-circus": "^29.5.0",
+    "js-yaml": "^4.1.0",
+    "prettier": "2.8.7",
+    "ts-jest": "^24.3.0",
+    "typescript": "^5.0.4"
+  }
+}
